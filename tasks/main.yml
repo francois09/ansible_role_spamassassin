@@ -16,11 +16,13 @@
     - sa__install
     - sa__configure
 
-- name: Enable spamassassin Cron update
-  lineinfile:
-    regexp: "^CRON=0"
-    line: 'CRON=1'
-    path: /etc/default/spamassassin
+- name: Setup default file
+  template:
+    src: spamassassin
+    dest: /etc/default/spamassassin
+    owner: root
+    group: root
+    mode: 0644
   when:
     - sa__install
     - sa__configure
