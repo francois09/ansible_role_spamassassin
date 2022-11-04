@@ -1,0 +1,6 @@
+---
+# handlers file for sa
+- name: Reload spamassassin
+  systemd:
+    name: spamassassin
+    state: reloaded

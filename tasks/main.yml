@@ -1,0 +1,46 @@
+---
+- name: Install spamassassin packages
+  apt:
+    name: "{{ sa__default_packages }}"
+    update_cache: yes
+    state: present
+  when:
+    - sa__install
+
+- name: Enable spamassassin
+  systemd:
+    name: spamassassin
+    state: started
+    enabled: yes
+  when:
+    - sa__install
+    - sa__configure
+
+- name: Enable spamassassin Cron update
+  lineinfile:
+    regexp: "^CRON=0"
+    line: 'CRON=1'
+    path: /etc/default/spamassassin
+  when:
+    - sa__install
+    - sa__configure
+
+- name: Mark subjects
+  lineinfile:
+    regexp: "^# rewrite_header"
+    line: 'rewrite_header Subject ***SPAM***'
+    path: /etc/spamassassin/local.cf
+  notify: Reload spamassassin
+  when:
+    - sa__install
+    - sa__configure
+
+- name: Change score
+  lineinfile:
+    regexp: "^# required_score"
+    line: 'required_score 4.0'
+    path: /etc/spamassassin/local.cf
+  notify: Reload spamassassin
+  when:
+    - sa__install
+    - sa__configure

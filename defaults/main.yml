@@ -1,0 +1,9 @@
+---
+# defaults file for sa
+sa__install: False
+sa__configure: False
+
+# defaults packages for sa
+sa__default_packages:
+  - spamassassin
+...
