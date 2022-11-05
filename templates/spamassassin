@@ -16,7 +16,7 @@
 # make sure --max-children is not set to anything higher than 5,
 # unless you know what you're doing.
 
-OPTIONS="--create-prefs -i 0.0.0.0 --max-children 5 --helper-home-dir"
+OPTIONS="--create-prefs -i 0.0.0.0 -A {{ sa__allowed_net }} --max-children 5 --helper-home-dir"
 
 # Pid file
 # Where should spamd write its PID to file? If you use the -u or
