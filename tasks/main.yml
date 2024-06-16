@@ -9,7 +9,7 @@
 
 - name: Enable spamassassin
   systemd:
-    name: spamassassin
+    name: spamd
     state: started
     enabled: yes
   when:
