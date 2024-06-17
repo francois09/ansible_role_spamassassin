@@ -18,8 +18,8 @@
 
 - name: Setup default file
   template:
-    src: spamassassin
-    dest: /etc/default/spamassassin
+    src: spamd
+    dest: /etc/default/spamd
     owner: root
     group: root
     mode: 0644
