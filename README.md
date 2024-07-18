@@ -29,6 +29,11 @@ Dependencies
 
 None
 
+Links
+-----
+
+Check https://cwiki.apache.org/confluence/display/SPAMASSASSIN/WritingRules for writing custom rules
+
 Example Playbooks
 -----------------
 
